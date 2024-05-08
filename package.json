@@ -21,6 +21,7 @@
     "@mui/icons-material": "^5.15.16",
     "@mui/material": "^5.15.16",
     "@mui/material-nextjs": "^5.15.11",
+    "@mui/x-charts": "^7.3.2",
     "@mui/x-data-grid": "^7.3.2",
     "clsx": "^2.1.1",
     "jotai": "^2.8.0",

@@ -1,0 +1,3 @@
+.chart-label .MuiChartsAxis-label {
+  transform: translateX(-25px);
+}

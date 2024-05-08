@@ -2,31 +2,35 @@
 
 Next.js + Storybook + Tailwind CSS + TypeScript
 
-### Prerequisites
+## Prerequisites
 
 - [Node.js](https://nodejs.org/) v20.11.1 or higher
 - [pnpm](https://pnpm.io/ja/installation) v8.15.0 or higher
 
-## Project setup
+### Project setup
 
 ```bash
 pnpm install
 ```
 
-## Development
+### Development
 
 ```bash
 pnpm dev
 ```
 
-## Storybook
+### Storybook
 
 ```bash
 pnpm storybook
 ```
 
-## Build
+### Build
 
 ```bash
 pnpm build
 ```
+
+## Lessons
+
+### [1. ダッシュボードページの作成](./lessons/01-dashboard.md)
