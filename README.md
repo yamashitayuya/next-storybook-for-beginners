@@ -1,4 +1,4 @@
-# Next storybook
+# Next storybook for Beginners
 
 Next.js + Storybook + Tailwind CSS + TypeScript
 
