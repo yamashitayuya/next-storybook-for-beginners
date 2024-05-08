@@ -5,34 +5,22 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "prettier/prettier",
     "next/core-web-vitals"
   ],
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
     "node/no-extraneous-import": "off",
     "node/no-unpublished-import": "off",
     "node/no-unpublished-require": "off",
-    "react-hooks/exhaustive-deps": [
-      "warn",
-      {
-        "additionalHooks": "useRecoilCallback"
-      }
-    ],
-    "prettier/prettier": [
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-misused-promises": [
       "error",
       {
-        "endOfLine": "auto"
+        "checksVoidReturn": false
       }
-    ],
-    "@typescript-eslint/no-explicit-any": "error"
-  },
-  "overrides": [
-    {
-      "files": ["packages/**/*"],
-      "rules": {
-        "@next/next/no-img-element": "off"
-      }
-    }
-  ]
+    ]
+  }
 }

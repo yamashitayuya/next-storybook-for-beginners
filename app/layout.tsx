@@ -1,9 +1,18 @@
+import {
+  CssBaseline,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { Provider } from "jotai";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
+import Modal from "components/containers/modal";
+import Notification from "components/containers/notification";
+import Root from "components/containers/root";
+import { theme } from "components/containers/root/theme";
 
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +25,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body>
+        <AppRouterCacheProvider options={{ key: "css" }}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <StyledEngineProvider injectFirst>
+              <Provider>
+                {/* Main layout container */}
+                <Root>{children}</Root>
+                {/* Modal layout container */}
+                <Modal />
+                {/** Notification layout container */}
+                <Notification />
+              </Provider>
+            </StyledEngineProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
