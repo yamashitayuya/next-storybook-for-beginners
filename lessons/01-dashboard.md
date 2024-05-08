@@ -30,3 +30,7 @@ Gridを使用し以下のレイアウトに調整を行う
 - chart: md:8 lg:9
 - deposit: md:4 lg:3
 - order: xs:12
+
+### サイドバーにダッシュボードへのリンクを追加
+
+1. `components/containers/root/navigation.tsx` に `/dashboard` のリンクを追加
