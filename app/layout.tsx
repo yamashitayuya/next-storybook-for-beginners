@@ -6,6 +6,7 @@ import {
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Provider } from "jotai";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 import Modal from "components/containers/modal";
 import Notification from "components/containers/notification";
@@ -24,6 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = headers().get("x-pathname") || "";
   return (
     <html lang="ja">
       <body>
@@ -31,14 +33,18 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <StyledEngineProvider injectFirst>
-              <Provider>
-                {/* Main layout container */}
-                <Root>{children}</Root>
-                {/* Modal layout container */}
-                <Modal />
-                {/** Notification layout container */}
-                <Notification />
-              </Provider>
+              {pathname.includes("auth") ? (
+                <>{children}</>
+              ) : (
+                <Provider>
+                  {/* Main layout container */}
+                  <Root>{children}</Root>
+                  {/* Modal layout container */}
+                  <Modal />
+                  {/** Notification layout container */}
+                  <Notification />
+                </Provider>
+              )}
             </StyledEngineProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
