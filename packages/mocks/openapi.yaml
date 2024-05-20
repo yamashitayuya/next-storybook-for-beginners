@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  title: Service
+  version: 0.0.0
+tags: []
+paths:
+  /v1/dashboard/deposit:
+    get:
+      operationId: V1_Deposit
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Dashboard.Deposit'
+  /v1/dashboard/order:
+    get:
+      operationId: V1_Order
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dashboard.Order'
+components:
+  schemas:
+    Dashboard.Deposit:
+      type: object
+      required:
+        - amount
+        - date
+      properties:
+        amount:
+          type: integer
+          format: int32
+          minimum: 0
+          x-faker:
+            finance.amount:
+              - 0
+              - 1000000
+              - 0
+        date:
+          allOf:
+            - $ref: '#/components/schemas/Shared.Date'
+          x-faker: date.soon
+      description: 最新の決済情報
+    Dashboard.Order:
+      type: object
+      required:
+        - id
+        - date
+        - amount
+        - shipTo
+        - paymentMethod
+        - name
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          x-faker: datatype.number
+        date:
+          $ref: '#/components/schemas/Shared.DateTime'
+        amount:
+          type: integer
+          format: int32
+          minimum: 0
+          x-faker:
+            finance.amount:
+              - 100
+              - 100000
+              - 0
+        shipTo:
+          type: string
+          x-faker: address.country
+        paymentMethod:
+          type: string
+          x-faker:
+            fake:
+              - VISA •••• {{helpers.replaceSymbolWithNumber(####)}}
+        name:
+          type: string
+          x-faker: name.findName
+      description: ダッシュボードの注文情報
+    Shared.Date:
+      type: string
+      format: date
+      description: |-
+        Date
+        Not timestamp
+        ex. 2021-01-01
+    Shared.DateTime:
+      type: string
+      format: timestamp
+      description: |-
+        DateTime
+        timestamp with timezone
+      x-faker: date.recent

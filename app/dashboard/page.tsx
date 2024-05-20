@@ -1,3 +1,5 @@
+import { ComponentProps } from "react";
+
 import Dashboard from "./dashboard";
 
 export default async function Page() {
@@ -27,57 +29,19 @@ async function getChartData() {
 }
 
 async function getDepositData() {
-  return await Promise.resolve({
-    data: {
-      amount: Math.floor(Math.random() * 10000),
-      date: new Date().toLocaleDateString(),
-    },
-  });
+  const result = (
+    await fetch("http://127.0.0.1:4010/v1/dashboard/deposit")
+  ).json();
+
+  const data = (await result) as ComponentProps<typeof Dashboard>["deposit"];
+  return data;
 }
 
 async function getOrderData() {
-  return await Promise.resolve({
-    data: [
-      {
-        id: 1,
-        date: new Date().toLocaleDateString(),
-        amount: Math.floor(Math.random() * 1000),
-        shipTo: "Tupelo, MS",
-        paymentMethod: "VISA •••• 3719",
-        name: "Elvis Presley",
-      },
-      {
-        id: 2,
-        date: new Date().toLocaleDateString(),
-        amount: Math.floor(Math.random() * 1000),
-        shipTo: "San Jose, CA",
-        paymentMethod: "VISA •••• 2574",
-        name: "Paul McCartney",
-      },
-      {
-        id: 3,
-        date: new Date().toLocaleDateString(),
-        amount: Math.floor(Math.random() * 1000),
-        shipTo: "Edinburgh, UK",
-        paymentMethod: "VISA •••• 7465",
-        name: "Tom Scholz",
-      },
-      {
-        id: 4,
-        date: new Date().toLocaleDateString(),
-        amount: Math.floor(Math.random() * 1000),
-        shipTo: "London, UK",
-        paymentMethod: "VISA •••• 4256",
-        name: "Michael Jackson",
-      },
-      {
-        id: 5,
-        date: new Date().toLocaleDateString(),
-        amount: Math.floor(Math.random() * 1000),
-        shipTo: "Johannesburg, SA",
-        paymentMethod: "VISA •••• 3245",
-        name: "Bruce Springsteen",
-      },
-    ],
-  });
+  const result = (
+    await fetch("http://127.0.0.1:4010/v1/dashboard/order")
+  ).json();
+
+  const data = (await result) as ComponentProps<typeof Dashboard>["order"];
+  return data;
 }

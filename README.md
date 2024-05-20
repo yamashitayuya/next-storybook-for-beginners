@@ -19,6 +19,12 @@ pnpm install
 pnpm dev
 ```
 
+mock serverを起動する
+
+```bash
+pnpm mock
+```
+
 ### Storybook
 
 ```bash
