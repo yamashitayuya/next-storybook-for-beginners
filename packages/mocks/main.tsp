@@ -1,5 +1,6 @@
 import "@typespec/http";
 import "@typespec/rest";
+import "@typespec/openapi";
 import "@typespec/openapi3";
 import "./dashboard.tsp";
 import "./employee.tsp";
@@ -8,10 +9,17 @@ import "./aggregate.tsp";
 import "./setting.tsp";
 
 using TypeSpec.Http;
+using TypeSpec.OpenAPI;
 
 @service({
   title: "Service",
 })
+@info({
+  title: "Service",
+  version: "1.0.0",
+  summary: "Service API",
+})
+@server("http://127.0.0.1:4010", "Local Mock Server")
 namespace Service;
 
 model BaseResponse<T> {
@@ -22,7 +30,7 @@ model BaseResponse<T> {
  * ダッシュボードAPI
  */
 @route("/v1/dashboard")
-interface V1 {
+interface V1Dashboard {
   /**
    * 受注情報
    */

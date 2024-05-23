@@ -10,7 +10,8 @@
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "mock": "pnpm run --filter=mocks serve"
+    "mock": "pnpm run --filter=mocks serve",
+    "document": "pnpm run --filter=mocks document"
   },
   "dependencies": {
     "@conform-to/react": "^1.1.3",

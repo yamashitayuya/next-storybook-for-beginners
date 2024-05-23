@@ -25,6 +25,12 @@ mock serverを起動する
 pnpm mock
 ```
 
+APIドキュメントを表示する
+
+```bash
+pnpm document
+```
+
 ### Storybook
 
 ```bash

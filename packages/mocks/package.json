@@ -13,6 +13,10 @@
   "private": true,
   "scripts": {
     "build": "tsp compile .",
-    "serve": "prism mock openapi.yaml -d --json-schema-faker-fillProperties=false"
+    "serve": "prism mock openapi.yaml -d --json-schema-faker-fillProperties=false",
+    "document": "live-server ."
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
   }
 }
