@@ -1,4 +1,5 @@
 import "@typespec/openapi";
+using TypeSpec.OpenAPI;
 
 namespace Shared;
 
@@ -15,5 +16,16 @@ scalar Date extends string;
  * timestamp with timezone
  */
 @format("timestamp")
-@TypeSpec.OpenAPI.extension("x-faker", "date.recent")
 scalar DateTime extends string;
+
+/**
+ * Phone number
+ * ex. 090-1234-5678
+ */
+@extension(
+  "x-faker",
+  {
+    `phone.phoneNumber`: ["###-####-####"],
+  }
+)
+scalar PhoneNumber extends string;

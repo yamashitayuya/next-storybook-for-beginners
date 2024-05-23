@@ -4,9 +4,89 @@ info:
   version: 0.0.0
 tags: []
 paths:
+  /v1/aggregate/manhour/{date}:
+    get:
+      operationId: V1Aggregate_ManHour
+      description: 現場工数集計
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/Shared.Date'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Aggregate.ManHour'
+  /v1/aggregate/nightshift:
+    get:
+      operationId: V1Aggregate_NightShift
+      description: 夜間勤務集計
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Aggregate.NightShift'
+  /v1/aggregate/paidvacation:
+    get:
+      operationId: V1Aggregate_PaidVacation
+      description: 有給休暇集計
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Aggregate.PaidVacation'
+  /v1/dashboard/chart:
+    get:
+      operationId: V1_Chart
+      description: 日時売上推移
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Dashboard.Chart'
   /v1/dashboard/deposit:
     get:
       operationId: V1_Deposit
+      description: 入金情報
       parameters: []
       responses:
         '200':
@@ -23,6 +103,7 @@ paths:
   /v1/dashboard/order:
     get:
       operationId: V1_Order
+      description: 受注情報
       parameters: []
       responses:
         '200':
@@ -38,8 +119,510 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Dashboard.Order'
+  /v1/employee:
+    get:
+      operationId: V1Employee_List
+      description: 一覧取得
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Employee.Employee'
+    post:
+      operationId: V1Employee_Create
+      description: 登録
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee.CreateOrUpdate'
+  /v1/employee/{id}:
+    get:
+      operationId: V1Employee_Get
+      description: 詳細取得
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+    put:
+      operationId: V1Employee_Update
+      description: 更新
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee.CreateOrUpdate'
+    delete:
+      operationId: V1Employee_Delete
+      description: 削除
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Employee.Employee'
+  /v1/partner:
+    get:
+      operationId: V1Partner_List
+      description: 一覧取得
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Partner.Partner'
+    post:
+      operationId: V1Partner_Create
+      description: 登録
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.Partner'
+  /v1/partner/{id}:
+    get:
+      operationId: V1Partner_Get
+      description: 詳細取得
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+    put:
+      operationId: V1Partner_Update
+      description: 更新
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partner.Partner'
+    delete:
+      operationId: V1Partner_Delete
+      description: 削除
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Partner.Partner'
+  /v1/setting/defaultassign:
+    get:
+      operationId: V1DefaultAssign_Get
+      description: 取得
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Setting.DefaultAssign'
+    put:
+      operationId: V1DefaultAssign_Update
+      description: 更新
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Setting.DefaultAssign'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Setting.DefaultAssign'
+  /v1/setting/holiday:
+    post:
+      operationId: V1SettingHoliday_Create
+      description: 登録
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Setting.Holiday'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Setting.Holiday'
+  /v1/setting/holiday/{id}:
+    get:
+      operationId: V1SettingHoliday_Get
+      description: 詳細取得
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Setting.Holiday'
+    put:
+      operationId: V1SettingHoliday_Update
+      description: 更新
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Setting.Holiday'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Setting.Holiday'
+    delete:
+      operationId: V1SettingHoliday_Delete
+      description: 削除
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Setting.Holiday'
+  /v1/setting/holiday/{month}:
+    get:
+      operationId: V1SettingHoliday_List
+      description: 一覧取得
+      parameters:
+        - name: month
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Setting.Holiday'
 components:
   schemas:
+    Aggregate.ManHour:
+      type: object
+      required:
+        - name
+        - startAt
+        - endAt
+        - manHour
+        - totalManHour
+      properties:
+        name:
+          type: string
+          description: 現場名
+          x-faker: address.city
+        startAt:
+          allOf:
+            - $ref: '#/components/schemas/Shared.Date'
+          description: 現場開始日時
+          x-faker: date.past
+        endAt:
+          allOf:
+            - $ref: '#/components/schemas/Shared.Date'
+          format: date
+          description: 現場終了日時
+          x-faker: date.future
+        manHour:
+          type: integer
+          format: int32
+          description: 対象月の工数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 30
+        totalManHour:
+          type: integer
+          format: int32
+          description: 総工数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 500
+      description: 工数
+    Aggregate.NightShift:
+      type: object
+      required:
+        - name
+        - count
+      properties:
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        count:
+          type: integer
+          format: int32
+          minimum: 0
+          description: 回数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 30
+      description: 夜間勤務回数
+    Aggregate.PaidVacation:
+      type: object
+      required:
+        - name
+        - count
+        - aggregationPeriod
+      properties:
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        count:
+          type: integer
+          format: int32
+          minimum: 0
+          description: 有給休暇日数
+          x-faker:
+            datatype.number:
+              - min: 0
+                max: 30
+        aggregationPeriod:
+          type: string
+          format: date
+          description: 人ごとによる今日までの集計期間
+          x-faker: date.past
+      description: 今日までの有給休暇
+    Color:
+      type: string
+      enum:
+        - '#ffffff'
+        - '#000000'
+        - '#ff0000'
+        - '#00ff00'
+        - '#0000ff'
+      description: カラーコード
+    Dashboard.Chart:
+      type: object
+      required:
+        - amount
+      properties:
+        amount:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard.ChartAmount'
+          minItems: 0
+          maxItems: 9
+      description: チャート情報
+    Dashboard.ChartAmount:
+      type: integer
+      format: int32
+      x-faker:
+        datatype.number:
+          - min: 0
+            max: 5000
+            precision: 100
     Dashboard.Deposit:
       type: object
       required:
@@ -50,6 +633,7 @@ components:
           type: integer
           format: int32
           minimum: 0
+          description: 金額
           x-faker:
             finance.amount:
               - 0
@@ -58,6 +642,7 @@ components:
         date:
           allOf:
             - $ref: '#/components/schemas/Shared.Date'
+          description: 日付
           x-faker: date.soon
       description: 最新の決済情報
     Dashboard.Order:
@@ -74,13 +659,18 @@ components:
           type: integer
           format: int32
           minimum: 1
+          description: 注文ID
           x-faker: datatype.number
         date:
-          $ref: '#/components/schemas/Shared.DateTime'
+          allOf:
+            - $ref: '#/components/schemas/Shared.DateTime'
+          description: 注文日
+          x-faker: date.recent
         amount:
           type: integer
           format: int32
           minimum: 0
+          description: 金額
           x-faker:
             finance.amount:
               - 100
@@ -88,16 +678,175 @@ components:
               - 0
         shipTo:
           type: string
+          description: お届け先
           x-faker: address.country
         paymentMethod:
           type: string
+          description: 支払い方法
           x-faker:
             fake:
               - VISA •••• {{helpers.replaceSymbolWithNumber(####)}}
         name:
           type: string
+          description: 注文者
           x-faker: name.findName
       description: ダッシュボードの注文情報
+    Employee.CreateOrUpdate:
+      type: object
+      required:
+        - password
+      properties:
+        password:
+          type: string
+          format: password
+          description: パスワード
+      allOf:
+        - $ref: '#/components/schemas/Employee.Employee'
+      description: 社員登録・編集
+    Employee.Employee:
+      type: object
+      required:
+        - name
+        - email
+        - phone
+        - initial
+        - hiredDate
+        - color
+        - isCalendarVisible
+        - role
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID
+        name:
+          type: string
+          description: 名前
+          x-faker: name.findName
+        email:
+          type: string
+          format: email
+          description: メールアドレス
+        phone:
+          allOf:
+            - $ref: '#/components/schemas/Shared.PhoneNumber'
+          description: 電話番号
+        initial:
+          type: string
+          minLength: 1
+          maxLength: 1
+          description: イニシャル文字
+        hiredDate:
+          type: string
+          format: date
+          description: 入社日
+        color:
+          allOf:
+            - $ref: '#/components/schemas/Color'
+          description: カラーコード
+        isCalendarVisible:
+          type: boolean
+          description: カレンダー表示フラグ
+        role:
+          allOf:
+            - $ref: '#/components/schemas/Role'
+          description: 権限
+      description: 社員
+    Partner.Partner:
+      type: object
+      required:
+        - name
+        - initial
+        - phone
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID
+        name:
+          type: string
+          description: 名前
+          x-faker: company.companyName
+        initial:
+          type: string
+          minLength: 1
+          maxLength: 1
+          description: イニシャル文字
+        phone:
+          allOf:
+            - $ref: '#/components/schemas/Shared.PhoneNumber'
+          description: 電話番号
+      description: パートナー
+    Role:
+      type: string
+      enum:
+        - admin
+        - employee
+      description: 権限
+    Setting.DefaultAssign:
+      type: object
+      required:
+        - weekdayAssign
+        - monday
+        - tuesday
+        - wednesday
+        - thursday
+        - friday
+        - saturday
+        - sunday
+        - holiday
+      properties:
+        weekdayAssign:
+          type: string
+          description: 平日アサイン先
+        monday:
+          type: boolean
+          description: 月曜日
+        tuesday:
+          type: boolean
+          description: 火曜日
+        wednesday:
+          type: boolean
+          description: 水曜日
+        thursday:
+          type: boolean
+          description: 木曜日
+        friday:
+          type: boolean
+          description: 金曜日
+        saturday:
+          type: boolean
+          description: 土曜日
+        sunday:
+          type: boolean
+          description: 日曜日
+        holiday:
+          type: boolean
+          description: 祝日
+      description: デフォルトアサイン設定
+    Setting.Holiday:
+      type: object
+      required:
+        - date
+        - name
+        - isNationalHoliday
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID
+        date:
+          allOf:
+            - $ref: '#/components/schemas/Shared.Date'
+          description: 休日
+          x-faker: date.future
+        name:
+          type: string
+          description: 休日名
+        isNationalHoliday:
+          type: boolean
+          description: 祝日フラグ
+      description: 休日設定
     Shared.Date:
       type: string
       format: date
@@ -111,4 +860,11 @@ components:
       description: |-
         DateTime
         timestamp with timezone
-      x-faker: date.recent
+    Shared.PhoneNumber:
+      type: string
+      description: |-
+        Phone number
+        ex. 090-1234-5678
+      x-faker:
+        phone.phoneNumber:
+          - '###-####-####'

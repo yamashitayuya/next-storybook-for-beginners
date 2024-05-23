@@ -1,5 +1,7 @@
 import { ComponentProps } from "react";
 
+import { api } from "lib/api";
+
 import Dashboard from "./dashboard";
 
 export default async function Page() {
@@ -9,7 +11,11 @@ export default async function Page() {
   return <Dashboard chart={chart} deposit={deposit} order={order} />;
 }
 
+/**
+ * チャートデータの取得
+ */
 async function getChartData() {
+  const result = await api<{ data: { amount: number[] } }>("dashboard/chart");
   return await Promise.resolve({
     data: [
       "00:00",
@@ -21,27 +27,27 @@ async function getChartData() {
       "18:00",
       "21:00",
       "24:00",
-    ].map((time) => ({
+    ].map((time, index) => ({
       time,
-      amount: Math.floor(Math.random() * 2500),
+      amount: result.data.amount[index] ?? 0,
     })),
   });
 }
 
+/**
+ * 売上情報の取得
+ */
 async function getDepositData() {
-  const result = (
-    await fetch("http://127.0.0.1:4010/v1/dashboard/deposit")
-  ).json();
-
-  const data = (await result) as ComponentProps<typeof Dashboard>["deposit"];
-  return data;
+  return await api<ComponentProps<typeof Dashboard>["deposit"]>(
+    "http://127.0.0.1:4010/v1/dashboard/deposit",
+  );
 }
 
+/**
+ * 受注データの取得
+ */
 async function getOrderData() {
-  const result = (
-    await fetch("http://127.0.0.1:4010/v1/dashboard/order")
-  ).json();
-
-  const data = (await result) as ComponentProps<typeof Dashboard>["order"];
-  return data;
+  return await api<ComponentProps<typeof Dashboard>["order"]>(
+    "http://127.0.0.1:4010/v1/dashboard/order",
+  );
 }
