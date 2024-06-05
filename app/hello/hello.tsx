@@ -1,5 +1,5 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { useCallback, useRef } from "react";
+import { Box, Button, TextField, Typography } from '@mui/material';
+import { useCallback, useRef } from 'react';
 
 export default function HelloComponent({
   message,
@@ -18,12 +18,7 @@ export default function HelloComponent({
       <div className="text-center">
         {message && <Typography variant="h1">{message}</Typography>}
         <Box className="p-2">
-          <TextField
-            id="outlined-basic"
-            label="送信テキスト"
-            variant="outlined"
-            inputRef={textRef}
-          />
+          <TextField id="outlined-basic" label="送信テキスト" variant="outlined" inputRef={textRef} />
         </Box>
 
         <Button variant="contained" onClick={handleSubmit}>

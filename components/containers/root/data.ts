@@ -1,5 +1,5 @@
-import { atom, useSetAtom } from "jotai";
-import { useCallback } from "react";
+import { atom, useSetAtom } from 'jotai';
+import { useCallback } from 'react';
 
 /**
  * Drawer open state

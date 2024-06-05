@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { ChevronLeft } from "@mui/icons-material";
-import { Divider, IconButton, Toolbar } from "@mui/material";
-import MuiDrawer from "@mui/material/Drawer";
-import clsx from "clsx";
-import { useAtomValue } from "jotai";
+import { ChevronLeft } from '@mui/icons-material';
+import { Divider, IconButton, Toolbar } from '@mui/material';
+import MuiDrawer from '@mui/material/Drawer';
+import clsx from 'clsx';
+import { useAtomValue } from 'jotai';
 
-import { drawer, useToggle } from "./data";
-import Navigation from "./navigation";
+import { drawer, useToggle } from './data';
+import Navigation from './navigation';
 
 export default function Drawer() {
   const open = useAtomValue(drawer);
@@ -16,17 +16,15 @@ export default function Drawer() {
     <MuiDrawer
       variant="permanent"
       PaperProps={{
-        className: clsx("relative", "whitespace-nowrap", {
-          "w-[240px]": open,
-          "overflow-x-hidden sm:w-16 w-14": !open,
+        className: clsx('relative', 'whitespace-nowrap', {
+          'w-[240px]': open,
+          'overflow-x-hidden sm:w-16 w-14': !open,
         }),
         sx: {
           transition: (theme) =>
-            theme.transitions.create("width", {
+            theme.transitions.create('width', {
               easing: theme.transitions.easing.sharp,
-              duration: open
-                ? theme.transitions.duration.leavingScreen
-                : theme.transitions.duration.enteringScreen,
+              duration: open ? theme.transitions.duration.leavingScreen : theme.transitions.duration.enteringScreen,
             }),
         },
       }}

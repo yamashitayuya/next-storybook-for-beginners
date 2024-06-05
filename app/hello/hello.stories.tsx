@@ -1,17 +1,17 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
-import HelloComponent from "./hello";
+import HelloComponent from './hello';
 
 const meta = {
-  title: "Example/Hello",
+  title: 'Example/Hello',
   component: HelloComponent,
   args: {
     onSubmit: fn(),
-    message: "",
+    message: '',
   },
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
 } satisfies Meta<typeof HelloComponent>;
 export default meta;
@@ -20,6 +20,6 @@ export const Hello: StoryObj<typeof meta> = {};
 
 export const Message: StoryObj<typeof meta> = {
   args: {
-    message: "message",
+    message: 'message',
   },
 };

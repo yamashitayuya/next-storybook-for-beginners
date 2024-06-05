@@ -1,4 +1,4 @@
-import { ChartData, DepositData, OrderData } from "./types";
+import { ChartData, DepositData, OrderData } from './types';
 
 export default function Dashboard({
   chart,

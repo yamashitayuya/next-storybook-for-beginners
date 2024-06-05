@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
-import { useCloseModal, useConfirmModal } from "lib/modal";
-import { useAddNotification } from "lib/notification";
+import { useCloseModal, useConfirmModal } from 'lib/modal';
+import { useAddNotification } from 'lib/notification';
 
-import HelloComponent from "./hello";
+import HelloComponent from './hello';
 
 export default function Hello() {
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>('');
   /**
    * The confirmModal is a hook that provides functionality for displaying a confirmation modal.
    */
@@ -34,10 +34,10 @@ export default function Hello() {
           await new Promise((resolve) => setTimeout(resolve, 1000));
           setMessage(`Hello ${message}`);
           closeModal();
-          addNotification({ message: "送信しました", variant: "success" });
+          addNotification({ message: '送信しました', variant: 'success' });
         },
         onCancel: closeModal,
-        confirmText: "送信",
+        confirmText: '送信',
       });
     },
     [addNotification, closeModal, confirmModal],

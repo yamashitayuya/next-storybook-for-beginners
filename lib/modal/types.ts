@@ -1,4 +1,4 @@
-import { MODAL_BODY_VARIANT } from "./constants";
+import { MODAL_BODY_VARIANT } from './constants';
 
 interface ModalStateBase<
   Type extends
@@ -12,7 +12,7 @@ interface ModalStateBase<
   /**
    * モーダルのサイズ
    */
-  size: "" | "lg";
+  size: '' | 'lg';
   /**
    * モーダルのタイトル
    */
@@ -30,10 +30,7 @@ export type ModalState = CloseModalState | ConfirmModalState;
 /**
  * モーダルの特定
  */
-export type ExtractModalExtraState<Type extends ModalState["type"]> = Extract<
-  ModalState,
-  { type: Type }
->["extra"];
+export type ExtractModalExtraState<Type extends ModalState['type']> = Extract<ModalState, { type: Type }>['extra'];
 
 /**
  * 閉じる

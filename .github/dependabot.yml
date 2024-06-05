@@ -1,0 +1,45 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      storybook:
+        patterns:
+          - 'storybook'
+          - '@storybook/*'
+          - eslint-plugin-storybook
+      varidation:
+        patterns:
+          - '@conform-to/*'
+          - zod
+      linter:
+        patterns:
+          - eslint
+          - 'typescript-eslint'
+          - 'eslint-plugin-*'
+          - 'eslint-config-*'
+          - stylelint
+          - 'stylelint-*'
+          - prettier
+          - 'prettier-*'
+          - '@trivago/prettier-plugin-sort-imports'
+      mui:
+        patterns:
+          - '@mui/*'
+          - '@emotion/*'
+          - flexsearch
+          - notistack
+          - react-virtuoso
+      next:
+        patterns:
+          - next
+          - eslint-config-next
+          - tailwindcss
+          - postcss
+          - react
+          - react-dom
+          - '@types/react'
+          - '@types/react-dom'
+          - jotai

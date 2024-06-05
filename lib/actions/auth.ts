@@ -1,20 +1,20 @@
-"use server";
+'use server';
 
-import { parseWithZod } from "@conform-to/zod";
-import { revalidatePath } from "next/cache";
-import { RedirectType, redirect } from "next/navigation";
+import { parseWithZod } from '@conform-to/zod';
+import { revalidatePath } from 'next/cache';
+import { RedirectType, redirect } from 'next/navigation';
 
-import { validation } from "lib/validations/auth";
+import { validation } from 'lib/validations/auth';
 
 /**
  * ログアウト
  */
 export async function logoutAction() {
-  await Promise.resolve("logout");
-  console.log("logout");
+  await Promise.resolve('logout');
+  console.log('logout');
 
-  revalidatePath("/");
-  redirect("/auth/login", RedirectType.replace);
+  revalidatePath('/');
+  redirect('/auth/login', RedirectType.replace);
 }
 
 /**
@@ -22,16 +22,16 @@ export async function logoutAction() {
  */
 export async function loginAction(_: unknown, formData: FormData) {
   const submission = parseWithZod(formData, { schema: validation });
-  if (submission.status !== "success") {
+  if (submission.status !== 'success') {
     return submission.reply();
   }
   const { email, password } = submission.value;
 
-  await Promise.resolve("login");
-  console.log("login", email, password);
+  await Promise.resolve('login');
+  console.log('login', email, password);
 
-  revalidatePath("/");
-  redirect("/", RedirectType.replace);
+  revalidatePath('/');
+  redirect('/', RedirectType.replace);
 }
 
 /**
@@ -39,14 +39,14 @@ export async function loginAction(_: unknown, formData: FormData) {
  */
 export async function registerAction(_: unknown, formData: FormData) {
   const submission = parseWithZod(formData, { schema: validation });
-  if (submission.status !== "success") {
+  if (submission.status !== 'success') {
     return submission.reply();
   }
   const { email, password } = submission.value;
 
-  await Promise.resolve("register");
-  console.log("register", email, password);
+  await Promise.resolve('register');
+  console.log('register', email, password);
 
-  revalidatePath("/");
-  redirect("/auth/register?register=ok", RedirectType.replace);
+  revalidatePath('/');
+  redirect('/auth/register?register=ok', RedirectType.replace);
 }

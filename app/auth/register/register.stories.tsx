@@ -1,18 +1,18 @@
-import { SubmissionResult } from "@conform-to/react";
-import { Meta, StoryObj } from "@storybook/react";
-import { expect, fn, userEvent, within } from "@storybook/test";
+import { SubmissionResult } from '@conform-to/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from '@storybook/test';
 
-import Register from "./register";
+import Register from './register';
 
 const meta = {
-  title: "auth/Register",
+  title: 'auth/Register',
   component: Register,
   args: {
     onSubmit: fn(),
     registered: false,
   },
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
 } satisfies Meta<typeof Register>;
 export default meta;
@@ -22,11 +22,11 @@ export const Main: StoryObj<typeof meta> = {};
 export const Error: StoryObj<typeof meta> = {
   args: {
     onSubmit: fn((_, formData) => {
-      "use server";
+      'use server';
       const result: SubmissionResult = {
         initialValue: Object.fromEntries(formData.entries()),
-        status: "error",
-        error: { "": ["正常に登録できませんでした"] },
+        status: 'error',
+        error: { '': ['正常に登録できませんでした'] },
       };
       return Promise.resolve(result);
     }),
@@ -35,12 +35,12 @@ export const Error: StoryObj<typeof meta> = {
     const canvas = within(canvasElement);
     const emailInput = canvas.getByLabelText(/メールアドレス/);
     await expect(emailInput).toBeInTheDocument();
-    await userEvent.type(emailInput, "test@example.com");
+    await userEvent.type(emailInput, 'test@example.com');
 
     const passwordInput = canvas.getByLabelText(/パスワード/);
     await expect(passwordInput).toBeInTheDocument();
-    await userEvent.type(passwordInput, "password");
-    const button = canvas.getByRole("button", { name: /登録/i });
+    await userEvent.type(passwordInput, 'password');
+    const button = canvas.getByRole('button', { name: /登録/i });
     await expect(button).toBeInTheDocument();
     await userEvent.click(button);
 

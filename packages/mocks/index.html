@@ -1,61 +1,67 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <title>Elements in Twitter Bootstrap</title>
 
-  <title>Elements in Twitter Bootstrap</title>
+    <!-- Elements: Web Component -->
+    <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css" />
 
-  <!-- Elements: Web Component -->
-  <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+    <!-- Twitter Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Twitter Bootstrap: Sticky Footer Example -->
+    <link
+      rel="stylesheet"
+      href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css"
+    />
 
-  <!-- Twitter Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Twitter Bootstrap: Sticky Footer Example -->
-  <link rel="stylesheet"
-    href="https://getbootstrap.com/docs/4.5/examples/sticky-footer-navbar/sticky-footer-navbar.css">
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
 
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
+      main {
+        flex: 1 0 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
 
-    main {
-      flex: 1 0 0;
-      overflow: hidden;
-    }
-  </style>
-</head>
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Api Documents</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+    </header>
 
-<body>
+    <!-- Begin page content -->
+    <main role="main">
+      <elements-api apiDescriptionUrl="/openapi.yaml" router="hash" />
+    </main>
 
-  <header>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Api Documents</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-  </header>
-
-  <!-- Begin page content -->
-  <main role="main">
-    <elements-api apiDescriptionUrl="/openapi.yaml" router="hash" />
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Awesome footer goes here.</span>
-    </div>
-  </footer>
-</body>
-
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Awesome footer goes here.</span>
+      </div>
+    </footer>
+  </body>
 </html>
