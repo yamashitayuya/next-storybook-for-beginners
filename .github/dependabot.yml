@@ -10,7 +10,7 @@ updates:
           - 'storybook'
           - '@storybook/*'
           - eslint-plugin-storybook
-      varidation:
+      validation:
         patterns:
           - '@conform-to/*'
           - zod
@@ -25,6 +25,7 @@ updates:
           - prettier
           - 'prettier-*'
           - '@trivago/prettier-plugin-sort-imports'
+          - lint-staged
       mui:
         patterns:
           - '@mui/*'
