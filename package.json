@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "node": ">=20.11.0",
-    "pnpm": ">=9.2.0",
+    "pnpm": ">=9.4.0",
     "npm": "Please use pnpm instead of NPM to install dependencies",
     "yarn": "Please use pnpm instead of YARN to install dependencies"
   },
@@ -29,8 +29,8 @@
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
     "@mui/material-nextjs": "^5.15.11",
-    "@mui/x-charts": "^7.7.0",
-    "@mui/x-data-grid": "^7.7.0",
+    "@mui/x-charts": "^7.7.1",
+    "@mui/x-data-grid": "^7.7.1",
     "clsx": "^2.1.1",
     "jotai": "^2.8.3",
     "next": "14.2.4",
@@ -53,7 +53,7 @@
     "@storybook/react": "^8.1.10",
     "@storybook/test": "^8.1.10",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/node": "^20.14.4",
+    "@types/node": "^20.14.8",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/uuid": "^9.0.8",
@@ -69,15 +69,16 @@
     "storybook": "^8.1.10",
     "stylelint": "^16.6.1",
     "stylelint-config-recess-order": "^5.0.1",
-    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
-    "stylelint-scss": "^6.3.1",
+    "stylelint-scss": "^6.3.2",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.13.1"
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1"
   },
   "lint-staged": {
     "*.{css,scss,md,mdx,json,js,ts,tsx}": "prettier --write",
     "*.{css,scss}": "stylelint --fix"
-  }
+  },
+  "packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74"
 }
