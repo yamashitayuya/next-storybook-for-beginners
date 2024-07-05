@@ -6,6 +6,7 @@ import Link from '@mui/material/Link';
 import { DepositData } from './types';
 
 export default function Deposit({ data }: Readonly<DepositData>) {
+  // US表記に変換
   const formattedAmount = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -18,8 +19,8 @@ export default function Deposit({ data }: Readonly<DepositData>) {
         Recent Deposits
       </Typography>
       <div className="chart-label w-full flex-grow overflow-hidden">
-        <div className="text-4xl">{formattedAmount}</div>
-        <div className="text-lg text-gray-500">{data.date}</div>
+        <div className="text-custom">{formattedAmount}</div>
+        <div className="text-base text-gray-500">{data.date}</div>
       </div>
       <Link color="primary" href="#" style={{ marginTop: 'auto' }}>
         View balance

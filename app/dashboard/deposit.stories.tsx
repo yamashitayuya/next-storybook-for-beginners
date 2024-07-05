@@ -6,6 +6,7 @@ const meta = {
   title: 'dashboard/Deposit',
   component: Component,
   args: {
+    // デモデータ
     data: {
       amount: 1000,
       date: 'on 1 Jan, 2021',

@@ -27,6 +27,7 @@ async function getChartData() {
 /**
  * 売上情報の取得
  */
+// 日付を05 Jul, 2024のフォーマットに変換する
 function formatDateForDeposit(inputDate: string) {
   const date = new Date(inputDate);
   const year = date.getFullYear();
@@ -48,7 +49,7 @@ function formatDateForDeposit(inputDate: string) {
   const day = date.getDate();
   return `on ${day} ${months[monthIndex]}, ${year}`;
 }
-
+// 売上情報を取得する
 async function getDepositData() {
   const result = await api<{ data: { amount: number; date: string } }>('dashboard/deposit');
   console.log('aaaaaaaaaaaa');
@@ -58,7 +59,6 @@ async function getDepositData() {
       date: formatDateForDeposit(result.data.date),
     },
   });
-  //return await api<ComponentProps<typeof Dashboard>['deposit']>('/dashboard/deposit');
 }
 
 /**
@@ -83,7 +83,6 @@ async function getOrderData() {
     data: { id: number; date: string; name: string; shipTo: String; payMentMethod: String; amount: number }[];
   }>('dashboard/order');
 
-  //console.log(Array.isArray(result.data));
   return await Promise.resolve({
     data: result.data.map((item: any) => {
       return {
@@ -95,48 +94,5 @@ async function getOrderData() {
         amount: item.amount,
       };
     }),
-    //data: [
-    // {
-    // id: 1,
-    // date: "on 15 March, 2019",
-    // name: "Elvis Presley",
-    // shipTo: "Tupelo, MS",
-    // paymentMethod: "VISA ⠀•••• 3719",
-    // amount: 312.44,
-    // },
-    // {
-    //   id: 2,
-    //   date: "on 15 March, 2019",
-    //   name: "Paul McCartney",
-    //   shipTo: "London, UK",
-    //   paymentMethod: "VISA ⠀•••• 2574",
-    //   amount: 866.99,
-    // },
-    // {
-    //   id: 3,
-    //   date: "on 15 March, 2019",
-    //   name: "Tom Scholz",
-    //   shipTo: "Boston, MA",
-    //   paymentMethod: "MC ⠀•••• 1253",
-    //   amount: 100.81,
-    // },
-    // {
-    //   id: 4,
-    //   date: "on 15 March, 2019",
-    //   name: "Michael Jackson",
-    //   shipTo: "Gary, IN",
-    //   paymentMethod: "AMEX ⠀•••• 2000",
-    //   amount: 654.39,
-    // },
-    // {
-    //   id: 5,
-    //   date: "on 15 March, 2019",
-    //   name: "Bruce Springsteen",
-    //   shipTo: "Long Branch, NJ",
-    //   paymentMethod: "VISA ⠀•••• 5919",
-    //   amount: 212.79,
-    // }
-    //],
   });
-  //return await api<ComponentProps<typeof Dashboard>['order']>('/dashboard/order');
 }

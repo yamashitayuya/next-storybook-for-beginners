@@ -6,6 +6,7 @@ const meta = {
   title: 'dashboard/Order',
   component: Component,
   args: {
+    // デモデータ
     data: [
       {
         id: 1,
