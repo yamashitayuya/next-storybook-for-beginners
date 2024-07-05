@@ -7,6 +7,22 @@ import './order.css';
 import { OrderData } from './types';
 
 export default function Order({ data }: Readonly<OrderData>) {
+  /**
+   * 受注データの取得
+   */
+  function formatDateForOrder(inputDate: string) {
+    const date = new Date(inputDate);
+
+    const year = date.getFullYear();
+    const day = ('0' + date.getDate()).slice(-2);
+
+    // 月の表記を変換するための配列
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const formattedDate = `${day} ${months[date.getMonth()]}, ${year} `;
+    return formattedDate;
+  }
+
   return (
     <Paper className="p-4">
       {/* Title */}
@@ -37,7 +53,7 @@ export default function Order({ data }: Readonly<OrderData>) {
           {data.map((item, index) => (
             <TableRow key={index} sx={{ borderBottom: '1px solid #ddd' }} className="p-2">
               <TableCell sx={{ padding: '6px', marginRight: 'auto' }} className="px-4">
-                {item.date}
+                {formatDateForOrder(item.date)}
               </TableCell>
               <TableCell sx={{ padding: '6px' }} className="px-4">
                 {item.name}

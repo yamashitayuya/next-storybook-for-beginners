@@ -15,7 +15,6 @@ export default function Dashboard({
   order,
 }: Readonly<{ chart: ChartData; deposit: DepositData; order: OrderData }>) {
   // propsとして渡す
-  console.log(chart);
   return (
     <div className="mx-auto custom:w-custom">
       <div>
