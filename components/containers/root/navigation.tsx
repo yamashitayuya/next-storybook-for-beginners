@@ -1,6 +1,6 @@
 'use client';
 
-import { Dashboard, People } from '@mui/icons-material';
+import { BarChart, Dashboard, Layers, People, ShoppingCart } from '@mui/icons-material';
 import { List } from '@mui/material';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -12,17 +12,35 @@ export default function Navigation() {
   const pathname = usePathname();
   return (
     <List component="nav">
-      <ListItemButton component={NextLink} href="/" selected={pathname === '/'}>
+      <ListItemButton component={NextLink} href="/dashboard" selected={pathname === '/dashboard'}>
         <ListItemIcon>
           <Dashboard />
         </ListItemIcon>
-        <ListItemText primary="Top" />
+        <ListItemText primary="Dashboard" />
       </ListItemButton>
       <ListItemButton component={NextLink} href="/hello" selected={pathname === '/hello'}>
         <ListItemIcon>
+          <ShoppingCart />
+        </ListItemIcon>
+        <ListItemText primary="Orders" />
+      </ListItemButton>
+      <ListItemButton component={NextLink} href="/" selected={pathname === '/'}>
+        <ListItemIcon>
           <People />
         </ListItemIcon>
-        <ListItemText primary="Hello" />
+        <ListItemText primary="Customers" />
+      </ListItemButton>
+      <ListItemButton component={NextLink} href="/" selected={pathname === '/'}>
+        <ListItemIcon>
+          <BarChart />
+        </ListItemIcon>
+        <ListItemText primary="Reports" />
+      </ListItemButton>
+      <ListItemButton component={NextLink} href="/" selected={pathname === '/'}>
+        <ListItemIcon>
+          <Layers />
+        </ListItemIcon>
+        <ListItemText primary="Integrations" />
       </ListItemButton>
     </List>
   );
