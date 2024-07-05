@@ -32,33 +32,19 @@ function formatDateForDeposit(inputDate: string) {
   const date = new Date(inputDate);
   const year = date.getFullYear();
   const monthIndex = date.getMonth();
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const day = date.getDate();
   return `on ${day} ${months[monthIndex]}, ${year}`;
 }
 // 売上情報を取得する
 async function getDepositData() {
   const result = await api<{ data: { amount: number; date: string } }>('dashboard/deposit');
-  console.log('aaaaaaaaaaaa');
-  return await Promise.resolve({
+  return {
     data: {
       amount: result.data.amount,
       date: formatDateForDeposit(result.data.date),
     },
-  });
+  };
 }
 
 /**
@@ -83,16 +69,12 @@ async function getOrderData() {
     data: { id: number; date: string; name: string; shipTo: String; payMentMethod: String; amount: number }[];
   }>('dashboard/order');
 
-  return await Promise.resolve({
+  return {
     data: result.data.map((item: any) => {
       return {
-        id: item.id,
+        ...item,
         date: formatDateForOrder(item.date),
-        name: item.name,
-        shipTo: item.shipTo,
-        paymentMethod: item.paymentMethod,
-        amount: item.amount,
       };
     }),
-  });
+  };
 }

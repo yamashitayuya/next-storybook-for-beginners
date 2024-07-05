@@ -58,10 +58,6 @@ export default function Order({ data }: Readonly<OrderData>) {
       <Link color="primary" href="#">
         See more orders
       </Link>
-      {/*<div className="chart-label w-full flex-grow overflow-hidden">
-        <div className="text-4xl font-bold">{data.amount}</div>
-        <div className="text-lg text-gray-500">{data.date}</div>
-      </div> */}
     </Paper>
   );
 }
