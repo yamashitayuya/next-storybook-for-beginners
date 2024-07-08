@@ -6,6 +6,7 @@ const meta = {
   title: 'dashboard/Chart',
   component: Component,
   args: {
+    // デモデータ
     data: [
       { time: '00:00', amount: 0 },
       { time: '03:00', amount: 200 },

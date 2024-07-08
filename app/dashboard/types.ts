@@ -1,5 +1,5 @@
 export interface ChartData {
-  data: { time: string; amount: number }[];
+  data: { amount: number[] };
 }
 
 export interface DepositData {

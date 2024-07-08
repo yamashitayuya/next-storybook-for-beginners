@@ -9,7 +9,17 @@ const config: Config = {
   ],
   important: 'body',
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        custom: '2.125rem',
+      },
+      width: {
+        custom: '1152px',
+      },
+      screens: {
+        custom: '1430px',
+      },
+    },
   },
   corePlugins: {
     // Remove the Tailwind CSS preflight styles so it can use Material UI's preflight instead (CssBaseline).
