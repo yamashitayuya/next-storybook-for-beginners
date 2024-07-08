@@ -25,7 +25,6 @@ export default function Order({ data }: Readonly<OrderData>) {
 
   return (
     <Paper className="p-4">
-      {/* Title */}
       <Typography component="h2" variant="h6" color="primary" gutterBottom>
         Recent Orders
       </Typography>
